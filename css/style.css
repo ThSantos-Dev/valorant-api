@@ -513,7 +513,7 @@ footer {
 
 .modal-information-container{
   width: inherit;
-  height:auto;
+  height: 300px;
 
   display: flex;
   flex-direction: column;
@@ -521,9 +521,12 @@ footer {
   justify-content: flex-start;
 }
 
-.modal-information-title {
-  height: max-content;
+.modal-information-container.scrollbar{
+  height: 250px;
+  overflow-y: auto;
+}
 
+.modal-information-title {
   font-family: "Fjalla One", sans-serif;
   font-weight: 600;
   font-size: 2.25rem;
@@ -547,16 +550,30 @@ footer {
   color: #f4f4f4;
 }
 
-.modal-information-container p::-webkit-scrollbar {
+.modal-information-container p.no-scrollbar {
+  overflow: unset;
+  display: inline;
+
+  margin-bottom: 40px;
+}
+
+
+.modal-information-container.scrollbar::-webkit-scrollbar,
+  .modal-information-container p::-webkit-scrollbar {
+  cursor: pointer;
   width: 5px; 
 }
 
+.modal-information-container.scrollbar::-webkit-scrollbar-track,
 .modal-information-container p::-webkit-scrollbar-track {
   background-color: #ff4655;
+  cursor: pointer;
 }
 
+.modal-information-container.scrollbar::-webkit-scrollbar-thumb,
 .modal-information-container p::-webkit-scrollbar-thumb {
   background-color: #ece8e1;
+  cursor: pointer;
 }
 
 /* **************** */

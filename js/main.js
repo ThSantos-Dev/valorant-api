@@ -7,7 +7,6 @@
 
 // Import de funções
 import {optionSelected} from './card.js'
-import {renderModalAgent} from './modal.js'
 
 // Verificando qual opção foi selecionada
 const selectFilter = document.getElementById("select");

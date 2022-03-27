@@ -105,14 +105,24 @@ const createModalAgent = (agent) => {
         <!-- // Skills container -->
 
         <!-- Information container -->
-        <div class="modal-information-container" id="modal-information">
+        <div class="modal-information-container scrollbar" id="modal-information">
           <!-- Title -->
           <h2 class="modal-information-title">${agent.role.displayName}</h2>
           <!-- // Title -->
 
           <!-- Description -->
-          <p>
+          <p class="no-scrollbar">
           ${agent.role.description}
+          </p>
+          <!-- // Description -->
+
+          <!-- Biography -->
+          <h2 class="modal-information-title">Biografia</h2>
+          <!-- // Biography -->
+
+          <!-- Description -->
+          <p class="no-scrollbar">
+          ${agent.description}
           </p>
           <!-- // Description -->
         </div>
@@ -146,27 +156,32 @@ const changeInfo = (agent) => {
 
       switch (iconSelected.toUpperCase()) {
         case 'FUNCAO':
-          content = createInformationHTML(agent.role.displayName, agent.role.description)
+          content = createInformationCompletHTML(agent.role.displayName, agent.role.description, agent.description)
+          informationContainer.classList.add('scrollbar')
           informationContainer.innerHTML = content
           break;
       
         case 'HABILIDADE1':
           content = createInformationHTML(agent.abilities[0].displayName, agent.abilities[0].description)
+          informationContainer.classList.remove('scrollbar')
           informationContainer.innerHTML = content
           break;
 
         case 'HABILIDADE2':
           content = createInformationHTML(agent.abilities[1].displayName, agent.abilities[1].description)
+          informationContainer.classList.remove('scrollbar')
           informationContainer.innerHTML = content
           break;
 
         case 'HABILIDADE3':
           content = createInformationHTML(agent.abilities[2].displayName, agent.abilities[2].description)
+          informationContainer.classList.remove('scrollbar')
           informationContainer.innerHTML = content
           break;
 
         case 'HABILIDADE4':
           content = createInformationHTML(agent.abilities[3].displayName, agent.abilities[3].description)
+          informationContainer.classList.remove('scrollbar')
           informationContainer.innerHTML = content
           break;
 
@@ -191,6 +206,34 @@ const createInformationHTML = (title, description) => {
     ${description}
     </p>
     <!-- // Description -->
+  </div>
+  <!-- // Information container -->
+  `;
+
+  return content;
+}
+
+const createInformationCompletHTML = (title, description, biography) => {
+  const content =  `
+  <!-- Information container -->
+  <div class="modal-information-container">
+    <!-- Title -->
+    <h2 class="modal-information-title">${title}</h2>
+    <!-- // Title -->
+
+    <!-- Description -->
+    <p class="no-scrollbar">
+    ${description}
+    </p>
+    <!-- // Description -->
+
+    <!-- Biography -->
+    <h2 class="modal-information-title">Biografia</h2>
+
+    <p class="no-scrollbar">
+    ${biography}
+    </p>
+    <!-- // Biography -->
   </div>
   <!-- // Information container -->
   `;
