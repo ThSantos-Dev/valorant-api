@@ -1,0 +1,562 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+
+@font-face {
+  font-family: "Default Valorant Font";
+  src: url(../assets/font/Tungsten/font-face/561f38b1f4570de0fb8a39d691ab058c.ttf);
+}
+
+@font-face {
+  font-family: "Default Valorant Font-Bold";
+  src: url(../assets/font/Tungsten/Tungsten-Bold/Tungsten-Bold.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Gerais */
+body {
+  font-family: "Default Valorant Font";
+  background-color: #ece8e1;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+header {
+  width: 100%;
+  height: 80px;
+
+  margin-bottom: 25px;
+  background-color: #111;
+}
+
+.header h1 {
+  text-transform: uppercase;
+  line-height: 80px;
+  font-size: 4.25rem;
+  color: #f4f4f4;
+
+  padding-left: 34px;
+}
+
+.search-container {
+  padding: 0 120px;
+
+  margin-bottom: 100px;
+}
+
+.search-container-content {
+  max-width: 1200px;
+  height: 60px;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid #000;
+  border-radius: 10px 50px 50px 10px;
+
+  background-color: #f4f4f4;
+}
+
+.search-select {
+  width: 150px;
+  height: 95%;
+
+  border-radius: 10px 0px 0px 10px;
+  background: #f4f4f4 url("../assets/img/icons/down-icon.png") 95.5% 50%
+    no-repeat;
+}
+
+.search-select select {
+  height: inherit;
+  width: 100%;
+
+  font-family: "Default Valorant Font";
+  font-size: 2.25rem;
+  text-transform: capitalize;
+  text-align: left;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  cursor: pointer;
+
+  padding-left: 12px;
+  background-color: transparent;
+}
+
+.search-select select option {
+  background-color: #f4f4f4;
+}
+
+.search-select select option:hover {
+  cursor: pointer;
+}
+
+.search-input {
+  flex: 1;
+  height: 90%;
+
+  display: flex;
+  align-items: center;
+
+  background-color: #f4f4f4;
+}
+
+.search-input input {
+  height: 70%;
+  width: 100%;
+
+  font-size: 2rem;
+  font-family: "Default Valorant Font";
+  color: #0f1923;
+
+  padding: 0 15px;
+
+  border-left: 3px solid #111;
+  border-right: 3px solid #111;
+
+  background-color: #f4f4f4;
+}
+
+.search-icon {
+  width: max-content;
+  height: 90%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  padding: 0 20px;
+
+  border-radius: 0 50px 50px 0;
+
+  background-color: #f4f4f4;
+}
+
+.search-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.section-title {
+  font-family: "Default Valorant Font-Bold";
+  font-size: 6rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: #0f1923;
+
+  margin-bottom: 105px;
+}
+
+footer {
+  width: 100%;
+  height: 135px;
+
+  background-color: #111;
+}
+
+.footer {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.75rem;
+  color: #fff;
+}
+
+/* ********* */
+
+/* Home */
+#home {
+  display: none;
+}
+#home.active {
+  display: block;
+}
+
+.home-content {
+  max-width: 1290px;
+  height: auto;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 80px;
+
+  padding: 20px;
+  margin-bottom: 240px;
+}
+
+.home-text-container {
+  flex: 1;
+  min-width: 310px;
+
+  /* margin-right: 80px; */
+  margin-bottom: 40px;
+}
+
+.home-subtitle {
+  font-size: 2.25em;
+  text-transform: uppercase;
+  color: #000;
+
+  margin-bottom: 30px;
+}
+
+.home-paragraph {
+  font-size: 1.75rem;
+  text-align: justify;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.home-video-container {
+  max-width: 570px;
+  max-height: 315px;
+
+  align-self: center;
+
+  margin: auto;
+}
+
+.home-video-container video {
+  width: 100%;
+  height: 100%;
+}
+/* **************** */
+
+/* Agentes */
+#agentes {
+  display: none;
+  margin-bottom: 240px;
+}
+
+#agentes.active {
+  display: block;
+}
+
+.cards-agents-container {
+  max-width: 1170px;
+  min-height: 630px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 30px 60px;
+
+  margin: 0 auto;
+}
+
+.card {
+  flex: 0 0 350px;
+  height: 600px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 25px 25px 20px 25px;
+
+  transition: all 0.3s;
+  cursor: pointer;
+
+  border-radius: 10px;
+  background-color: #0f1923;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(1, 1, 1, 0.9);
+}
+
+.card:hover > .card-image {
+  transform: scale(1.11);
+}
+
+.card:hover > .card-name {
+  color: #ff4655;
+}
+
+.card-name {
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  color: #f4f4f4;
+
+  margin-bottom: 25px;
+}
+
+.card-image {
+  width: 300px;
+  height: 300px;
+
+  position: relative;
+
+  transition: all 0.3s;
+
+  margin-bottom: 45px;
+}
+
+.card-image img {
+  width: inherit;
+  height: inherit;
+
+  position: absolute;
+
+  object-fit: cover;
+}
+
+.card-biography {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 1.375rem;
+  color: #f4f4f4;
+
+  margin-bottom: 30px;
+}
+
+.card-button-details {
+  width: 100%;
+  align-self: end;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-button-details button {
+  font-size: 1.75rem;
+  font-family: "Default Valorant Font";
+  text-transform: uppercase;
+  color: #0f1923;
+
+  padding: 5px 50px;
+
+  border: 1px solid #ff4655;
+  border-radius: 10px;
+
+  transition: all 0.3s;
+
+  background-color: #f4f4f4;
+}
+
+.card-button-details button:hover {
+  cursor: pointer;
+
+  color: #f4f4f4;
+
+  border: 1px solid #f4f4f4;
+
+  background-color: #ff4655;
+}
+/* **************** */
+
+/* Modal - Agents */
+.modal-agents {
+  width: 100%;
+  min-height: 100vh;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(1, 1, 1, 0.3);
+}
+
+.modal-agents.active {
+  display: flex;
+}
+
+.modal-container {
+  width: 1080px;
+  height: 600px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 10px;
+  background-color: #0f1923;
+}
+
+#closeModal {
+  width: 30px;
+  height: 30px;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  cursor: pointer;
+}
+
+#closeModal img{
+  width: inherit;
+  height: inherit;
+
+  object-fit: cover;
+}
+
+.modal-agent-image{
+  width: 440px; 
+  height: 500px;
+
+  overflow: hidden;
+}
+
+.modal-agent-image img {
+  width: inherit;
+  height: inherit;
+
+  transform: scale(1.2);
+  object-fit: contain;
+}
+
+.modal-agent-content {
+  flex: 1;
+  height: inherit;
+
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.modal-agent-name {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 4rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #f4f4f4;
+
+  margin-bottom: 60px;
+}
+
+.modal-details-container {
+  width: inherit;
+  height: auto;
+
+}
+
+.modal-skills-container {
+  width: inherit;
+  height: 70px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 20px;
+  
+  margin-bottom: 45px;
+}
+
+.modal-info-image {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.3s;
+  border: 1px solid #f4f4f4;
+}
+
+.modal-info-image:hover {
+  cursor: pointer;
+
+  transform: scale(1.1);
+
+  background-color: #ff4655;
+}
+
+.modal-info-image.active {
+  background-color: #ff4655;
+}
+
+.modal-info-image img{
+  width: 50px;
+  height: 50px;
+}
+
+.modal-information-container{
+  width: inherit;
+  height:auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.modal-information-title {
+  height: max-content;
+
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 600;
+  font-size: 2.25rem;
+  color: #f4f4f4;
+  text-transform: uppercase;
+
+  margin-bottom: 20px
+}
+
+.modal-information-container p{
+  width: 100%;
+  height: 200px;
+
+  display: block;
+  overflow-y: auto;
+
+  font-family: "Fjalla One", sans-serif;
+  font-size: 1.75rem;
+  line-height: 2.75rem;
+  word-spacing: 5px;
+  color: #f4f4f4;
+}
+
+.modal-information-container p::-webkit-scrollbar {
+  width: 5px; 
+}
+
+.modal-information-container p::-webkit-scrollbar-track {
+  background-color: #ff4655;
+}
+
+.modal-information-container p::-webkit-scrollbar-thumb {
+  background-color: #ece8e1;
+}
+
+/* **************** */

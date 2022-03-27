@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valorant - API</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <script src="./js/main.js" type="module" defer></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header container">
+        <h1>valorant api</h1>
+      </div>
+    </header>
+    <!-- //  Header -->
+
+    <!-- Search -->
+    <div class="search-container container">
+      <div class="search-container-content">
+        <!-- Select area -->
+        <div class="search-select">
+          <select name="" id="select">
+            <option select>select</option>
+            <option value="agentes" id="agentesOption">agentes</option>
+            <option value="armas" id="armasOption">armas</option>
+          </select>
+        </div>
+        <!-- // Select area -->
+
+        <!-- Input area -->
+        <div class="search-input">
+          <input type="text" name="" id="searchInput" />
+        </div>
+        <!-- // Input area -->
+
+        <!-- Search Icon area -->
+        <div class="search-icon">
+          <img src="assets/img/icons/search-icon.png" alt="search-icon" />
+        </div>
+        <!-- // Search Icon area -->
+      </div>
+    </div>
+    <!-- Search -->
+
+    <!-- Home -->
+    <section class="container active" id="home">
+      <h1 class="section-title">nós somos valorant</h1>
+
+      <!-- Home - subtitle, paragraph -->
+      <div class="home-content">
+        <!-- Home - text -->
+        <div class="home-text-container">
+          <h2 class="home-subtitle">desafie seus limites</h2>
+
+          <div class="home-paragraph">
+            <p>
+              Misture o seu estilo e experiência em um cenário global e
+              competitivo. Você terá 13 rodadas para atacar e defender com
+              disparos certeiros e habilidades táticas. Com apenas uma vida por
+              rodada, você deve pensar mais rápido que o oponente se quiser
+              sobreviver. Encare inimigos nos modos Competitivo e Sem Ranque,
+              além da Disputa da Spike e do Mata-Mata!
+            </p>
+          </div>
+          <!-- // Home - subtitle, paragraph -->
+        </div>
+        <!-- // Home - text -->
+
+        <!-- Home - video -->
+        <div class="home-video-container">
+          <video autoplay loop>
+            <source
+              src="https://assets.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltefd45731d8f9d9df/6217f2ea910a6c613c73168c/VALORANT_PLAY22_16x9_Target4_v005.mp4"
+              type="video/mp4"
+            />
+            <span>Seu navegador não suporta video</span>
+          </video>
+        </div>
+        <!-- // Home - video -->
+      </div>
+    </section>
+    <!-- // Home -->
+
+    <!-- Agents -->
+    <section class="container" id="agentes">
+      <h1 class="section-title">Agentes</h1>
+
+      <div class="cards-agents-container" id="cardContainer">
+        <!-- Card 01 -->
+        <div class="card">
+          <!-- Name -->
+          <div class="card-name">
+            <h2>Breach</h2>
+          </div>
+          <!-- // Name -->
+
+          <!-- Image -->
+          <div class="card-image">
+            <img src="assets/img/agents/background.png" alt="" />
+            <!-- Image background -->
+            <img src="assets/img/agents/fullportraitv2.png" alt="" />
+            <!-- Image main -->
+          </div>
+          <!-- // Image -->
+
+          <!-- Biography -->
+          <div class="card-biography">
+            <p>
+              Breach, o homem-biônico sueco, dispara poderosos jatos cinéti...
+            </p>
+          </div>
+          <!-- // Biography -->
+
+          <!-- Button - Details   -->
+          <div class="card-button-details">
+            <button>detalhes</button>
+          </div>
+          <!-- // Button - Details   -->
+        </div>
+        <!-- // Card 01 -->
+    </section>
+    <!-- // Agents -->
+
+    <!-- Modal - Agents -->
+    <section class="modal-agents" id="container-modal">
+      <div class="modal-container" id="modal">
+        <!-- Close modal -->
+        <div id="closeModal">
+          <img src="assets/img/icons/close-modal.png" alt="" />
+        </div>
+        <!-- // Close modal -->
+
+        <!-- Image Agent -->
+        <div class="modal-agent-image">
+          <img src="assets/img/agents/fullportraitv2.png" alt="" />
+        </div>
+        <!-- // Image Agent -->
+
+        <!-- Content container -->
+        <div class="modal-agent-content">
+          <!-- Agente name -->
+          <h1 class="modal-agent-name">Breach</h1>
+          <!-- // Agente name -->
+
+          <!-- Details container  -->
+          <div class="modal-details-container">
+            <!-- Skills container -->
+            <div class="modal-skills-container">
+              <!-- Role -->
+              <div class="modal-info-image">
+                <img src="assets/img/icons/info.png" alt="">
+              </div>
+              <!-- // Role -->
+              
+              <!-- Skill 01 -->
+              <div class="modal-info-image">
+                <img src="assets/img/icons/skill1.png" alt="" />
+              </div>
+              <!-- // Skill 01 -->
+
+              <!-- Skill 01 -->
+              <div class="modal-info-image active">
+                <img src="assets/img/icons/skill2.png" alt="" />
+              </div>
+              <!-- // Skill 01 -->
+
+              <!-- Skill 01 -->
+              <div class="modal-info-image">
+                <img src="assets/img/icons/skill3.png" alt="" />
+              </div>
+              <!-- // Skill 01 -->
+
+              <!-- Skill 01 -->
+              <div class="modal-info-image">
+                <img src="assets/img/icons/ultimate.png" alt="" />
+              </div>
+              <!-- // Skill 01 -->
+            </div>
+            <!-- // Skills container -->
+
+            <!-- Information container -->
+            <div class="modal-information-container" id="modal-information">
+              <!-- Title -->
+              <h2 class="modal-information-title">Falha tectônica</h2>
+              <!-- // Title -->
+
+              <!-- Description -->
+              <p>
+                EQUIPE um impacto sísmico. SEGURE O DISPARO para aumentar a distância. SOLTE para iniciar o terremoto, estonteando todos os jogadores na zona e numa linha reta até a zona.
+              </p>
+              <!-- // Description -->
+            </div>
+            <!-- // Information container -->
+          </div>
+          <!-- // Details container  -->
+        </div>
+        <!-- // Content container -->
+      </div>
+    </section>
+    <!-- // Modal - Agents -->
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer container">
+        <h2>&copy;Copyright 2022 - Riot Games</h2>
+        <h2>Desenvolvido por Thales Santos</h2>
+      </div>
+    </footer>
+    <!-- // Footer -->
+  </body>
+</html>
