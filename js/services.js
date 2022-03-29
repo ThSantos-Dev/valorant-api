@@ -14,5 +14,21 @@ export const selectAllAgents = async () => {
     const data = await response.json();
   
     return data;
-  };
+};
   
+// Varáiavel que armazena o retorno da API e fornece seus dados a toda aplicação
+export const allAgents = await selectAllAgents();
+
+// Função que filtra um agente por nome
+export const findAgentByName = async (agentName) => {
+  const allAgents = await selectAllAgents();
+
+  const agentSelected =  allAgents.data.filter((agent) => {
+    return agentName.toUpperCase() === agent.displayName.toUpperCase()
+  });
+
+  if(agentSelected.length > 0)
+    return agentSelected[0]
+  else 
+    return false
+}

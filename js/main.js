@@ -8,6 +8,13 @@
 // Import de funções
 import {optionSelected} from './card.js'
 
+import {createListAgent} from "./search.js"
+
+createListAgent()
+
 // Verificando qual opção foi selecionada
 const selectFilter = document.getElementById("select");
 selectFilter.addEventListener("click", optionSelected)
+
+
+

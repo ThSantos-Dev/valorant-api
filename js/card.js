@@ -6,21 +6,33 @@
  *******************************************************/
 
 // Import do Service (responsável pela buscar na API)
-import { selectAllAgents } from "./services.js";
+import {allAgents} from "./services.js";
+
 import {linkModal} from "./modal.js"
 
-// Função que renderiza cards de Agente
-const renderCardAgent = async () => {
+// Função que renderiza todos os cards de Agente
+export const renderaAllCardAgent = async () => {
   document.getElementById("home").classList.remove('active')  
   document.getElementById("agentes").classList.add("active");
 
   const cardContainer = document.getElementById("cardContainer");
-  const allAgents = await selectAllAgents();
   const cards = await allAgents.data.map(createCardAgent);
 
   cardContainer.replaceChildren(...cards);
   linkModal()
 };
+
+// Função q renderiza apenas um card de Agent
+export const renderOneCardAgent = (agent) => {
+  document.getElementById("home").classList.remove('active')  
+  document.getElementById("agentes").classList.add("active");
+
+  const cardContainer = document.getElementById("cardContainer");
+  const card = createCardAgent(agent);
+
+  cardContainer.replaceChildren(card);
+  linkModal()
+}
 
 // Função que cria card de Agente
 const createCardAgent = (agent) => {
@@ -73,7 +85,7 @@ export const optionSelected = () => {
 
     switch (selectValue.toUpperCase()) {
         case 'AGENTES':
-            renderCardAgent()
+            renderaAllCardAgent()
             break;
     
         default:

@@ -190,6 +190,7 @@ footer {
 /* Home */
 #home {
   display: none;
+  min-height: 100vh;
 }
 #home.active {
   display: block;
@@ -249,6 +250,7 @@ footer {
 /* Agentes */
 #agentes {
   display: none;
+  min-height: 100vh;
   margin-bottom: 240px;
 }
 
@@ -577,3 +579,7 @@ footer {
 }
 
 /* **************** */
+
+datalist option {
+  background-color: #ff4655;
+}

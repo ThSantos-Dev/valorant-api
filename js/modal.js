@@ -5,15 +5,13 @@
  *******************************************************/
 
 // Função que retorna os dados de todos os Agentes 
-import { selectAllAgents } from "./services.js";
+import {allAgents} from "./services.js";
 
 // Função que renderiza a modal de Agentes
 export const renderModalAgent = async (agentName) => {
     const modalContainer = document.getElementById('container-modal')
     modalContainer.classList.add('active')
   
-    const allAgents = await selectAllAgents();
-
     const agentSelected = allAgents.data.filter((agent) => {
       return agentName.toUpperCase() === agent.displayName.toUpperCase()
     });
@@ -32,7 +30,6 @@ export const renderModalAgent = async (agentName) => {
 
 export const linkModal = () => {
   const cards = document.querySelectorAll('.card')
-  console.log(cards)
   cards.forEach(card => {
     card.addEventListener('click', () => {
       renderModalAgent(card.dataset.agentName)
@@ -45,8 +42,6 @@ const createModalAgent = (agent) => {
     const modal = document.createElement('div');
     modal.classList.add('modal-container'); 
     modal.id = 'modal'   
-
-    console.log(agent.displayName)
 
     modal.innerHTML = `
     <div class="modal-container" id="modal">
@@ -142,8 +137,6 @@ const changeInfo = (agent) => {
   let content = ''
   const informationContainer = document.getElementById('modal-information')
   const allAbilities = document.querySelectorAll('.modal-info-image')
-
-  console.log(informationContainer)
 
   allAbilities.forEach(icon => {
     const iconSelected = icon.dataset.iconSelected
