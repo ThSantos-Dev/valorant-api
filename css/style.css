@@ -273,7 +273,7 @@ footer {
   margin: 0 auto;
 }
 
-.card {
+#agentes .card {
   flex: 0 0 350px;
   height: 600px;
 
@@ -291,19 +291,19 @@ footer {
   background-color: #0f1923;
 }
 
-.card:hover {
+#agentes .card:hover {
   box-shadow: 0 10px 20px rgba(1, 1, 1, 0.9);
 }
 
-.card:hover > .card-image {
+#agentes .card:hover > .card-image {
   transform: scale(1.11);
 }
 
-.card:hover > .card-name {
+#agentes .card:hover > .card-name {
   color: #ff4655;
 }
 
-.card-name {
+#agentes .card-name {
   font-size: 2.25rem;
   text-transform: uppercase;
   color: #f4f4f4;
@@ -311,7 +311,7 @@ footer {
   margin-bottom: 25px;
 }
 
-.card-image {
+#agentes .card-image {
   width: 300px;
   height: 300px;
 
@@ -322,7 +322,7 @@ footer {
   margin-bottom: 45px;
 }
 
-.card-image img {
+#agentes .card-image img {
   width: inherit;
   height: inherit;
 
@@ -331,7 +331,7 @@ footer {
   object-fit: cover;
 }
 
-.card-biography {
+#agentes .card-biography {
   font-family: "Fjalla One", sans-serif;
   font-size: 1.375rem;
   color: #f4f4f4;
@@ -339,7 +339,7 @@ footer {
   margin-bottom: 30px;
 }
 
-.card-button-details {
+#agentes .card-button-details {
   width: 100%;
   align-self: end;
 
@@ -348,7 +348,7 @@ footer {
   align-items: center;
 }
 
-.card-button-details button {
+#agentes .card-button-details button {
   font-size: 1.75rem;
   font-family: "Default Valorant Font";
   text-transform: uppercase;
@@ -364,7 +364,7 @@ footer {
   background-color: #f4f4f4;
 }
 
-.card-button-details button:hover {
+#agentes .card-button-details button:hover {
   cursor: pointer;
 
   color: #f4f4f4;
@@ -373,6 +373,173 @@ footer {
 
   background-color: #ff4655;
 }
+
+/* Weapons */
+#armas {
+  display: none;
+}
+
+#armas.active {
+  display: block;
+}
+
+#armas .card {
+  width: 1200px;
+  height: 610px;
+
+  padding-top: 30px;
+
+  margin: auto;
+  margin-bottom: 60px;
+
+  border: 1px solid #000;
+}
+
+#armas .card-name {
+  font-size: 3rem;
+  text-align: center;
+
+  margin-bottom: 80px;
+}
+
+#armas .card-container-img-chromas {
+  width: 100%;
+  height: 200px;
+
+  position: relative;
+  margin-bottom: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#armas .card-chroma-container {
+  height: 40px;
+  z-index: 9;  
+
+  display: flex;
+  gap: 15px;
+
+  position: absolute;
+  left: 40px;
+  bottom: 50px;
+}
+
+#armas .card-chroma-container > img{
+  height: inherit;
+
+  object-fit: contain;
+}
+
+#armas .card-chroma-container > img.active {
+  box-shadow: 0 0px 10px #01F8FF;
+}
+
+#armas .card-chroma-container:hover > img{
+  cursor: pointer;
+}
+
+#armas .card-chroma-container:nth-last-child(1) > img{
+  margin-right: 0px;
+}
+
+#armas .card-main-image-container {
+  width: 100%;
+  height: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#armas .card-main-image-container img{
+  height: inherit;
+  object-fit: contain;  
+}
+
+#armas .card-carousel-skins-container {
+  width: inherit;
+  height: 150px;
+
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#armas .card-carousel-controls{
+  width: 80px;
+  height: 80px;
+  
+  position: absolute;
+
+  transition: all 0.3s;
+}
+
+#armas .card-carousel-controls:hover{
+  cursor: pointer;
+
+  transform: scale(1.1);
+}
+
+#armas .card-carousel-controls img{
+  width: inherit;
+  height: inherit;
+
+  object-fit: contain;
+}
+
+.card-carousel-skins {
+  width: 980px;
+  height: inherit;
+
+  margin: auto;
+  
+  position: absolute;
+  overflow: hidden;
+
+  transition: all 0.5s;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card-carousel-skins-images {
+  min-width: 300px;
+  max-width: 300px;
+  height: 125px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.5s;
+
+  margin-right: 40px;
+  border: 1px solid #000;
+}
+
+.card-carousel-skins-images:hover {
+  cursor: pointer;
+  border: 1px solid #ff4655;
+}
+
+.card-carousel-skins-images:hover > img {
+  transform: scale(0.9)
+}
+
+.card-carousel-skins-images img{
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+
+  transition: all 0.3s;
+  object-fit: contain;
+}
+
+/* //  Weapons */
 /* **************** */
 
 /* Modal - Agents */

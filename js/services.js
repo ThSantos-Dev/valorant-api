@@ -16,8 +16,22 @@ export const selectAllAgents = async () => {
     return data;
 };
   
-// Varáiavel que armazena o retorno da API e fornece seus dados a toda aplicação
+// Função que retorna os dados de todo o Arsenal
+export const selectAllWeapons = async () => {
+  const baseUrl =
+  "https://valorant-api.com/v1/weapons?language=pt-BR&isPlayableCharacter=true";
+
+const response = await fetch(baseUrl);
+const data = await response.json();
+
+return data;
+}
+
+// Varáiavel que armazena o retorno da API sobre os Agentes e fornece seus dados a toda aplicação
 export const allAgents = await selectAllAgents();
+
+// Varáiavel que armazena o retorno da API sobre o Arsenal e fornece seus dados a toda aplicação
+export const allWeapons = await selectAllWeapons();
 
 // Função que filtra um agente por nome
 export const findAgentByName = async (agentName) => {

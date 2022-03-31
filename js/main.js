@@ -6,11 +6,13 @@
 
 
 // Import de funções
-import {optionSelected} from './card.js'
+import {optionSelected, renderaAllCardWeapon} from './card.js'
 
 import {createListAgent} from "./search.js"
 
 createListAgent()
+
+renderaAllCardWeapon()
 
 // Verificando qual opção foi selecionada
 const selectFilter = document.getElementById("select");
