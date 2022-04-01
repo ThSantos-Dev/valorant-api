@@ -416,7 +416,6 @@ footer {
 
 #armas .card-chroma-container {
   height: 40px;
-  z-index: 9;  
 
   display: flex;
   gap: 15px;
@@ -520,6 +519,10 @@ footer {
 
   margin-right: 40px;
   border: 1px solid #000;
+}
+
+.card-carousel-skins-images.active {
+  border: 2px solid #ff4655;
 }
 
 .card-carousel-skins-images:hover {

@@ -102,6 +102,7 @@ export const renderaAllCardWeapon = async () => {
       `#${card.id} .card-carousel-skins`
     );
     skinCardClick(card.id, container.id);
+    createCarousel(card.id)
   });
 };
 
@@ -132,7 +133,7 @@ const createCardWeapon = (weapon) => {
   <!-- Content Main image and chromas skin -->
   <div class="card-container-img-chromas">
     <!-- Chroma container -->
-    <div class="card-chroma-container" data-skin-chromas>
+    <div class="card-chroma-container" id="chromaContainer--${weapon.uuid}">
 
     </div>
     <!-- // Chroma container -->
@@ -148,7 +149,7 @@ const createCardWeapon = (weapon) => {
   <!-- Carousel Skins Container -->
   <div class="card-carousel-skins-container">
     <!-- Controls -->
-    <div class="card-carousel-controls" data-control-left="${
+    <div class="card-carousel-controls" id="controlLeft--${
       weapon.uuid
     }" style="left: 0px;">
       <img src="assets/img/icons/left-chevron.png" alt="">
@@ -156,7 +157,9 @@ const createCardWeapon = (weapon) => {
     <!-- // Controls -->
 
     <div class="card-carousel-skins" id="carouselSkins--${weapon.uuid}">
-      <div class="card-carousel-skins-images">
+      <div class="card-carousel-skins-images" data-skin-default="${
+        weapon.defaultSkinUuid
+      }">
         <img src="${weapon.displayIcon}" alt="${weapon.displayName}">
       </div>
 
@@ -164,7 +167,7 @@ const createCardWeapon = (weapon) => {
     </div>
 
     <!-- Controls -->
-    <div class="card-carousel-controls" data-control-right="${
+    <div class="card-carousel-controls" id="controlRight--${
       weapon.uuid
     }" style="right: 0;">
       <img src="assets/img/icons/right-chevron.png" alt="">
@@ -197,82 +200,129 @@ const createSkinCards = (skins) => {
 
 // Função que adiciona click em todos os cards de skin
 const skinCardClick = (idCardContainer, idCard) => {
-  const id = idCard.split("--")[1];
-
   const allCards = document.querySelectorAll(
     `#${idCard} .card-carousel-skins-images`
   );
 
+  allCards[0].classList.add('active')
+
   allCards.forEach((card) => {
     card.addEventListener("click", () => {
+      // Lógica para deixar apenas uma skin selecionada
+      allCards.forEach((card) => {
+        card.classList.remove('active')
+      })
+
+      card.classList.add('active')
+
       const idSkin = card.dataset.cardWeaponSkinId;
 
-
-      let skinSelected = allWeapons.data.map((weapon) => {
-        const selected = weapon.skins.filter((skin) => skin.uuid == idSkin);
-        return selected.filter(elem => elem !== undefined);
-      });
-
-      console.log(skinSelected);
-
-      // Alterando titulo do card
-      document
-        .querySelector(`#${idCardContainer} .card-name`)
-        .innerHTML = `<h2>${skinSelected.displayName}</h2>`;
-
-      // Alterando imagem principal
-      document.querySelector(
-        `#${idCardContainer} .card-main-image-container img`
-      ).src = `${skinSelected.displayIcon ? skinSelected.displayIcon : skinSelected.chromas[0].displayIcon
-      }`;
-
-      // Adicionando chromas da skin
-      let imgs = skinSelected.chromas.map((chroma) => {
-        const img = document.createElement('img');
-        img.src = chroma.swatch ? chroma.swatch : ''
-        return img;  
-      });
-
-      document
-        .querySelector(`#${idCardContainer} .card-chroma-container`)
-        .replaceChildren(...imgs)
+      let skinSelected = "";
+      if (idSkin !== undefined) {
+        allWeapons.data.forEach((weapon) => {
+          weapon.skins.filter((skin) => {
+            if (skin.uuid == idSkin) skinSelected = skin;
+          });
+        });
+        changeSkin(idCardContainer, skinSelected, false);
+      } else {
+        skinSelected = allWeapons.data.filter(
+          (weapon) => card.dataset.skinDefault == weapon.defaultSkinUuid
+        )[0];
+        changeSkin(idCardContainer, skinSelected, true);
+      }
     });
   });
 };
 
 // Função que altera as informações de skin
-const changeSkin = async (idCardContainer, idCard, idSkin) => {
-  const skinSelected = await allWeapons.data.forEach((weapon) => {
-    const selected = weapon.skins.filter((skin) => skin.uuid === idSkin);
-    // console.log(selected[0])
-    return selected[0];
-  });
-
-  console.log(skinSelected);
-
+const changeSkin = (idCardContainer, skinSelected, skinDefault) => {
   // Alterando titulo do card
-  const test = document.querySelector(`#${idCardContainer} .card-name`);
-  test.innerHTML = `<h2>${skinSelected.displayName}</h2>`;
+  document.querySelector(
+    `#${idCardContainer} .card-name`
+  ).innerHTML = `<h2>${skinSelected.displayName}</h2>`;
 
   // Alterando imagem principal
-  document.querySelector(
-    `#${idCard} .card-main-image-container img`
-  ).src = `${skinSelected.displayIcon}`;
+  const imageMain = document.querySelector(
+    `#${idCardContainer} .card-main-image-container img`
+  );
+  imageMain.src = `${
+    skinSelected.displayIcon
+      ? skinSelected.displayIcon
+      : skinSelected.chromas[0].displayIcon
+  }`;
 
   // Adicionando chromas da skin
+  const chromasContainer = document.querySelector(
+    `#${idCardContainer} .card-chroma-container`
+  );
+
   let chromas = "";
-  skinSelected.chromas.forEach((chroma) => {
-    chromas += `
-        <img src="${chroma.swatch ? chroma.swatch : ""}" alt="">
+  if (!skinDefault) {
+    skinSelected.chromas.forEach((chroma) => {
+      if (chroma.swatch !== null) {
+        chromas += `
+        <img src="${chroma.swatch}" alt="${chroma.displayName}" data-skin-chroma-id="${chroma.uuid}">
       `;
-  });
+      }
+    });
 
-  document
-    .querySelector(`#${idCard} .card-chroma-container`)
-    .innerHTML(chromas);
+  }
 
-  // changeSkinByChroma(idCard)
+  chromasContainer.innerHTML = chromas;
+  changeSkinByChroma(imageMain, chromasContainer.id, skinSelected.chromas);
+
 };
+
+// Função que altera as informações da skin a partir do chroma
+const changeSkinByChroma = (imageMain, idChromasContainer, chromas) => {
+  // Adicionando evento de click em cada icone de chroma
+  const icons = document.querySelectorAll(`#${idChromasContainer} img`)
+  if(icons.length > 0) {
+    icons[0].classList.add('active')
+
+    icons.forEach((icon) => {
+      icon.addEventListener("click", () => {
+        // Lógica para deixar apenas um chroma selecionado
+        icons.forEach((icon) =>
+          icon.classList.remove('active')
+        )
+  
+        chromas.forEach((chroma) => {
+          if (icon.dataset.skinChromaId == chroma.uuid)
+            imageMain.src = chroma.fullRender;
+        });
+  
+        icon.classList.add('active')
+      });
+    });
+  }
+};
+
+// Funções para funcionalidade de carousel
+const createCarousel = (idCard) => {
+  const weaponUuid = idCard.split('--')[1]
+  let count = 1
+
+  // Resgatando os botões de ação
+  const btnPrevious = document.querySelector(`#${idCard} #controlLeft--${weaponUuid}`);
+  const btnNext = document.querySelector(`#${idCard} #controlRight--${weaponUuid}`);
+
+  // Primeira skin da lista
+  const firstSkin = document.querySelector(`#${idCard}  .card-carousel-skins .card-carousel-skins-images`)
+
+  // Adicioanando click aos botões
+  btnPrevious.addEventListener('click', () => {
+    
+  })
+
+  btnNext.addEventListener('click', () => {
+    firstSkin.style.marginLeft = `calc(-900px * ${count})`
+    count++
+  })
+}
+
+
 
 /** // Funções para Armas */
 
