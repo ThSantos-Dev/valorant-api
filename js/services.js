@@ -46,3 +46,17 @@ export const findAgentByName = async (agentName) => {
   else 
     return false
 }
+
+// Função que filtra um agente por nome
+export const findWeaponByName = async (weaponName) => {
+  const allWeapons = await selectAllWeapons();
+
+  const weaponSelected =  allWeapons.data.filter((weapon) => {
+    return weaponName.toUpperCase() === weapon.displayName.toUpperCase()
+  });
+
+  if(weaponSelected.length > 0)
+    return weaponSelected[0]
+  else 
+    return false
+}

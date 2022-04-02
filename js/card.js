@@ -7,6 +7,7 @@
 
 // Import do Service (responsável pela buscar na API)
 import { allAgents, allWeapons } from "./services.js";
+import {createListAll ,createListAgent, createListWeapon} from './search.js'
 import { linkModal } from "./modal.js";
 
 /** Funções para Agentes **/
@@ -90,6 +91,7 @@ const createCardAgent = (agent) => {
 // Função que renderiza TODS os cards de Armas
 export const renderaAllCardWeapon = async () => {
   document.getElementById("home").classList.remove("active");
+  document.getElementById("agentes").classList.remove("active");
   document.getElementById("armas").classList.add("active");
 
   const cardContainer = document.getElementById("card-weapons-container");
@@ -102,19 +104,25 @@ export const renderaAllCardWeapon = async () => {
       `#${card.id} .card-carousel-skins`
     );
     skinCardClick(card.id, container.id);
-    createCarousel(card.id)
+    createCarousel(card.id);
   });
 };
 
 // Função que renderiza apenas UM card de Arma
 export const renderOneCardWeapon = (weapon) => {
   document.getElementById("home").classList.remove("active");
+  document.getElementById("agentes").classList.remove("active");
   document.getElementById("armas").classList.add("active");
 
   const cardContainer = document.getElementById("card-weapons-container");
   const card = createCardWeapon(weapon);
 
   cardContainer.replaceChildren(card);
+
+  const container = document.querySelector(`#${card.id} .card-carousel-skins`);
+
+  skinCardClick(card.id, container.id);
+  createCarousel(card.id);
 };
 
 // Função que cria card de armas
@@ -204,16 +212,16 @@ const skinCardClick = (idCardContainer, idCard) => {
     `#${idCard} .card-carousel-skins-images`
   );
 
-  allCards[0].classList.add('active')
+  allCards[0].classList.add("active");
 
   allCards.forEach((card) => {
     card.addEventListener("click", () => {
       // Lógica para deixar apenas uma skin selecionada
       allCards.forEach((card) => {
-        card.classList.remove('active')
-      })
+        card.classList.remove("active");
+      });
 
-      card.classList.add('active')
+      card.classList.add("active");
 
       const idSkin = card.dataset.cardWeaponSkinId;
 
@@ -266,34 +274,30 @@ const changeSkin = (idCardContainer, skinSelected, skinDefault) => {
       `;
       }
     });
-
   }
 
   chromasContainer.innerHTML = chromas;
   changeSkinByChroma(imageMain, chromasContainer.id, skinSelected.chromas);
-
 };
 
 // Função que altera as informações da skin a partir do chroma
 const changeSkinByChroma = (imageMain, idChromasContainer, chromas) => {
   // Adicionando evento de click em cada icone de chroma
-  const icons = document.querySelectorAll(`#${idChromasContainer} img`)
-  if(icons.length > 0) {
-    icons[0].classList.add('active')
+  const icons = document.querySelectorAll(`#${idChromasContainer} img`);
+  if (icons.length > 0) {
+    icons[0].classList.add("active");
 
     icons.forEach((icon) => {
       icon.addEventListener("click", () => {
         // Lógica para deixar apenas um chroma selecionado
-        icons.forEach((icon) =>
-          icon.classList.remove('active')
-        )
-  
+        icons.forEach((icon) => icon.classList.remove("active"));
+
         chromas.forEach((chroma) => {
           if (icon.dataset.skinChromaId == chroma.uuid)
             imageMain.src = chroma.fullRender;
         });
-  
-        icon.classList.add('active')
+
+        icon.classList.add("active");
       });
     });
   }
@@ -301,41 +305,74 @@ const changeSkinByChroma = (imageMain, idChromasContainer, chromas) => {
 
 // Funções para funcionalidade de carousel
 const createCarousel = (idCard) => {
-  const weaponUuid = idCard.split('--')[1]
-  let count = 1
+  const weaponUuid = idCard.split("--")[1];
+  let current = 0;
 
   // Resgatando os botões de ação
-  const btnPrevious = document.querySelector(`#${idCard} #controlLeft--${weaponUuid}`);
-  const btnNext = document.querySelector(`#${idCard} #controlRight--${weaponUuid}`);
+  const btnPrevius = document.querySelector(
+    `#${idCard} #controlLeft--${weaponUuid}`
+  );
+  const btnNext = document.querySelector(
+    `#${idCard} #controlRight--${weaponUuid}`
+  );
 
   // Primeira skin da lista
-  const firstSkin = document.querySelector(`#${idCard}  .card-carousel-skins .card-carousel-skins-images`)
+  const containerCards = document.querySelector(
+    `#${idCard}  .card-carousel-skins`
+  );
+  const countCards = containerCards.children;
 
-  // Adicioanando click aos botões
-  btnPrevious.addEventListener('click', () => {
-    
-  })
+  // Funções para btnPrevius e btnNext
+  const changeCards = () => {
+    const firstCard = countCards[0];
 
-  btnNext.addEventListener('click', () => {
-    firstSkin.style.marginLeft = `calc(-900px * ${count})`
-    count++
-  })
-}
+    if (current >= countCards.length / 3) current = 0;
+    else if (current < 0) current = countCards.length / 3 - 1;
 
+    let newMargin = 1020 * current;
+    firstCard.style.marginLeft = `-${newMargin}px`;
+  };
 
+  const cardPrevius = () => {
+    current--;
+    changeCards();
+  };
+
+  const cardNext = () => {
+    current++;
+    changeCards();
+  };
+
+  // Adicionando ação aos botões Previus e Next
+  btnPrevius.addEventListener("click", cardPrevius);
+  btnNext.addEventListener("click", cardNext);
+};
 
 /** // Funções para Armas */
 
-export const optionSelected = () => {
+export const optionSelected = async () => {
   const selectValue = document.getElementById("select").value.toString();
 
   switch (selectValue.toUpperCase()) {
     case "AGENTES":
+      document
+      .getElementById('list-all')
+      .innerHTML = await createListAgent();
+      
       renderaAllCardAgent();
+      break;
+    case "ARSENAL":
+      document
+      .getElementById('list-all')
+      .innerHTML = await createListWeapon();
+
+      renderaAllCardWeapon();
       break;
 
     default:
+      createListAll();
       document.getElementById("agentes").classList.remove("active");
+      document.getElementById("armas").classList.remove("active");
       document.getElementById("home").classList.add("active");
       break;
   }
