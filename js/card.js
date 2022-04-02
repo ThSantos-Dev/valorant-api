@@ -355,6 +355,10 @@ export const optionSelected = async () => {
 
   switch (selectValue.toUpperCase()) {
     case "AGENTES":
+      document.getElementById("armas").classList.remove("active");
+      document.getElementById("home").classList.remove("active");
+      document.getElementById("agentes").classList.add("active")
+
       document
       .getElementById('list-all')
       .innerHTML = await createListAgent();
@@ -362,6 +366,9 @@ export const optionSelected = async () => {
       renderaAllCardAgent();
       break;
     case "ARSENAL":
+      document.getElementById("agentes").classList.remove("active");
+      document.getElementById("home").classList.remove("active");
+      document.getElementById("armas").classList.add("active");
       document
       .getElementById('list-all')
       .innerHTML = await createListWeapon();
