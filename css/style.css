@@ -384,7 +384,7 @@ footer {
 }
 
 #armas .card {
-  width: 1200px;
+  max-width: 1200px;
   height: 610px;
 
   padding-top: 30px;
@@ -393,6 +393,11 @@ footer {
   margin-bottom: 60px;
 
   border: 1px solid #000;
+}
+
+#armas #card-weapons-container {
+  width: 100%;
+  padding: 30px;
 }
 
 #armas .card-name {
@@ -491,7 +496,7 @@ footer {
 }
 
 .card-carousel-skins {
-  width: 980px;
+  max-width: 980px;
   height: inherit;
 
   margin: auto;
@@ -550,6 +555,8 @@ footer {
   width: 100%;
   min-height: 100vh;
 
+  padding: 30px;
+
   position: fixed;
   top: 0;
   right: 0;
@@ -566,7 +573,7 @@ footer {
 }
 
 .modal-container {
-  width: 1080px;
+  max-width: 1080px;
   height: 600px;
 
   position: relative;
@@ -753,3 +760,88 @@ footer {
 datalist option {
   background-color: #ff4655;
 }
+
+
+
+/* Media Queries */
+@media only screen and (max-width: 1080px) {
+
+}
+
+@media only screen and (max-width: 960px) {
+  .modal-agent-image {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .search-container.container {
+    width: 90%;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .search-container-content {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+
+    height: auto;
+    padding: 20px;
+
+    border-radius: 20px;
+  }
+
+  .search-input input {
+    width: 100%;
+
+    padding-top: 20px;
+    margin: 20px;
+
+    text-align: center;
+
+    border: none;
+    border-top: 3px solid #000;
+  }
+
+  .modal-container {
+    transform: scale(0.9);
+  }
+  
+}
+
+@media only screen and (max-width: 470px) {
+  .modal-container {
+    max-height: 600px;
+    flex-direction: column;
+
+  }
+
+  .modal-agent-content {
+    padding: 1px;
+  }
+
+  .modal-information-container.scrollbar{
+    min-height: 0px;
+    height: 100%;
+    max-height: 300px;
+  }
+
+}
+
+@media only screen and (max-width: 395px) {
+  .modal-info-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modal-container {
+    width: 100%;
+  }
+
+  .modal-agents {
+    padding: 0px;
+  }
+}
+/* // Media Queries */
