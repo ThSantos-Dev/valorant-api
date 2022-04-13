@@ -5,5 +5,3 @@
 </p>
 
 <span>Planejamento no <a href="https://www.figma.com/file/yqvOKKt6mozk7OxP2Q3w56/valorant?node-id=0%3A1" target="_blank">Figma</a></span>
-
-  [PLANEJAMENTO](https://www.figma.com/file/yqvOKKt6mozk7OxP2Q3w56/valorant?node-id=0%3A1)
