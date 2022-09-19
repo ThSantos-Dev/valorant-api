@@ -61,7 +61,7 @@ const createCardAgent = (agent) => {
             : "assets/img/agents/background.png"
         }" alt="${agent.displayName}" />
         <!-- Image background -->
-        <img src="${agent.fullPortraitV2}" alt="${agent.displayName}" />
+        <img src="${agent.fullPortrait}" alt="${agent.displayName}" />
         <!-- Image main -->
       </div>
       <!-- // Image -->

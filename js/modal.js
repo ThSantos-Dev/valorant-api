@@ -53,7 +53,7 @@ const createModalAgent = (agent) => {
 
     <!-- Image Agent -->
     <div class="modal-agent-image">
-      <img src="${agent.fullPortraitV2}" alt="${agent.displayName}" />
+      <img src="${agent.fullPortrait}" alt="${agent.displayName}" />
     </div>
     <!-- // Image Agent -->
 
